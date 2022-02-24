@@ -48,5 +48,15 @@ public class RegistryTest {
         Assert.assertEquals(RegisterResult.DEAD, result);
     }
 
+	 @Test
+    public void validateRegistryDuplicatedResult() { 
+    	Person person = new Person("Votante3",100002,30,Gender.MALE,true);
+        Person person2 = new Person("Votante4",100002,86,Gender.FEMALE,true);
+        
+        registry.registerVoter(person);
+        RegisterResult result2 = registry.registerVoter(person2);
+        
+        Assert.assertEquals(RegisterResult.DUPLICATED, result2);
+    }
     // TODO Complete with more test cases
 }
